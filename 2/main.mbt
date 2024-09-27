@@ -39,9 +39,7 @@ fn op_add(self : Node, v : Node) -> Node {
 fn op_add(self : LazyTag, v : LazyTag) -> LazyTag {
   match (self, v) {
     (Tag(a), Tag(b)) => Tag(a + b)
-    (Tag(_), Nil) => self
-    (Nil, Tag(_)) => v
-    (Nil, Nil) => Nil
+    (Nil, t) | (t, Nil) => t
   }
 }
 
